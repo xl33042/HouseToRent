@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace配置DAO的路径-->
+<mapper namespace="com.example.myspringboot.dao.PermissionMapper">
+
+    <sql id="base_column_list">
+        id, permission, desc
+    </sql>
+
+    <select id="findByRoleId" parameterType="List" resultType="String">
+        select path
+        from permission, role_permission rp
+        where rp.permission_id = permission.id and rp.role_id in
+        <foreach collection="roleIds" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+    <select id="rolePermission" resultType="com.example.myspringboot.entity.Permission">
+        select a.* FROM permission a LEFT JOIN role_permission b on a.id = b.permission_id LEFT JOIN role c ON b.role_id = c.id WHERE c.id = #{id}
+    </select>
+
+</mapper>
