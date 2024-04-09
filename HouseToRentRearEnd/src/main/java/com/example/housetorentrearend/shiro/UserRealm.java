@@ -2,9 +2,9 @@ package com.example.housetorentrearend.shiro;
 
 import com.example.housetorentrearend.entity.Role;
 import com.example.housetorentrearend.entity.User;
-import com.example.housetorentrearend.service.PermissionService;
-import com.example.housetorentrearend.service.RoleService;
-import com.example.housetorentrearend.service.UserService;
+import com.example.housetorentrearend.service.backstage.PermissionService;
+import com.example.housetorentrearend.service.backstage.RoleService;
+import com.example.housetorentrearend.service.backstage.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;

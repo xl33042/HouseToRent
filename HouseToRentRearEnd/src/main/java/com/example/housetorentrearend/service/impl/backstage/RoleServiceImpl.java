@@ -1,15 +1,15 @@
-package com.example.housetorentrearend.service.impl;
+package com.example.housetorentrearend.service.impl.backstage;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.housetorentrearend.dao.PermissionMapper;
-import com.example.housetorentrearend.dao.RoleMapper;
-import com.example.housetorentrearend.dao.RolePermissionMapper;
+import com.example.housetorentrearend.dao.backstage.PermissionMapper;
+import com.example.housetorentrearend.dao.backstage.RoleMapper;
+import com.example.housetorentrearend.dao.backstage.RolePermissionMapper;
 import com.example.housetorentrearend.entity.Role;
 import com.example.housetorentrearend.entity.RolePermission;
-import com.example.housetorentrearend.service.RoleService;
+import com.example.housetorentrearend.service.backstage.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

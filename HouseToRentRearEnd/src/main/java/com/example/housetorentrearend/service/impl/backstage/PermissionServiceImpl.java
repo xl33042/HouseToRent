@@ -1,8 +1,8 @@
-package com.example.housetorentrearend.service.impl;
+package com.example.housetorentrearend.service.impl.backstage;
 
 
-import com.example.housetorentrearend.dao.PermissionMapper;
-import com.example.housetorentrearend.service.PermissionService;
+import com.example.housetorentrearend.dao.backstage.PermissionMapper;
+import com.example.housetorentrearend.service.backstage.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

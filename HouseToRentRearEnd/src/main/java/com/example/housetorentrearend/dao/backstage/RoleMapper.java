@@ -1,4 +1,4 @@
-package com.example.housetorentrearend.dao;
+package com.example.housetorentrearend.dao.backstage;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

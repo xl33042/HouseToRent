@@ -1,4 +1,4 @@
-package com.example.housetorentrearend.service;
+package com.example.housetorentrearend.service.backstage;
 
 import java.util.List;
 

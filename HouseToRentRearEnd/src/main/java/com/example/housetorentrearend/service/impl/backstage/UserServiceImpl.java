@@ -1,17 +1,15 @@
-package com.example.housetorentrearend.service.impl;
+package com.example.housetorentrearend.service.impl.backstage;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.housetorentrearend.dao.UserMapper;
+import com.example.housetorentrearend.dao.backstage.UserMapper;
 import com.example.housetorentrearend.entity.User;
-import com.example.housetorentrearend.service.UserService;
+import com.example.housetorentrearend.service.backstage.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 @Service("userService2")
