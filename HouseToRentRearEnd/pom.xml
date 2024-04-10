@@ -262,6 +262,12 @@
             <artifactId>wx-java-miniapp-spring-boot-starter</artifactId>
             <version>4.5.0</version>
         </dependency>
+        <!--微信短信-->
+        <dependency>
+            <groupId>com.github.qcloudsms</groupId>
+            <artifactId>qcloudsms</artifactId>
+            <version>1.0.6</version>
+        </dependency>
     </dependencies>
 
 
