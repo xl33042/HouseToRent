@@ -16,6 +16,9 @@ public class PersonInfoVO {
     @TableField("userName")
     private String userName;
 
+    @TableField("password")
+    private String password;
+
     @TableField("houseId")
     private Integer houseId;
 

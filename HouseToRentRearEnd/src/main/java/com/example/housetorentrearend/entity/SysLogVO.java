@@ -31,8 +31,6 @@ public class SysLogVO {
     @TableField("ip")
     private String ip;
 
-    @TableField("address")
-    private String address;
 
     @TableField("create_time")
     private Date createTime;
