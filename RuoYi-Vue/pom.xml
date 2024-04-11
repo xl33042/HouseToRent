@@ -175,11 +175,7 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>3.5.3.1</version>
             </dependency>
-            <!-- lombok -->
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-            </dependency>
+
             <!-- fastjson -->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -202,11 +198,6 @@
                 <artifactId>junit-jupiter</artifactId>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-extension</artifactId>
-                <version>3.5.3.1</version>
-            </dependency>
             <!--shiro权限控制-->
             <dependency>
                 <groupId>org.apache.shiro</groupId>
@@ -223,12 +214,6 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
-            </dependency>
-            <!--微信小程序-->
-            <dependency>
-                <groupId>com.github.binarywang</groupId>
-                <artifactId>wx-java-miniapp-spring-boot-starter</artifactId>
-                <version>4.5.0</version>
             </dependency>
             <!--aop依赖-->
             <dependency>

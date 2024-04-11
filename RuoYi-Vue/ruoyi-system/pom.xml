@@ -22,7 +22,25 @@
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+            <version>3.5.3.1</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+
+            <artifactId>lombok</artifactId>
+
+            <!-- 注意这里应替换为最新版本号 -->
+
+            <version>1.18.24</version>
+
+            <!-- 或者指定其他适用的版本号 -->
+
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 </project>
