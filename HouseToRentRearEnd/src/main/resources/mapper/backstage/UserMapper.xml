@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--namespace配置DAO的路径-->
-<mapper namespace="com.example.myspringboot.dao.UserMapper">
+<mapper namespace="com.example.housetorentrearend.dao.backstage.UserMapper">
 
     <sql id="base_column_list">
         id, account, password, username
