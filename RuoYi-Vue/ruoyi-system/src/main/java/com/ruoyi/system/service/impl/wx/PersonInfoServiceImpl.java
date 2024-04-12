@@ -1,28 +1,30 @@
-package com.example.housetorentrearend.service.impl.wx;
+package com.ruoyi.system.service.impl.wx;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.housetorentrearend.dao.wx.PersonInfoDao;
-import com.example.housetorentrearend.entity.PersonInfoVO;
-import com.example.housetorentrearend.service.wx.PersonInfoService;
+
+
+import com.ruoyi.system.domain.vo.PersonInfoVO;
+import com.ruoyi.system.mapper.wx.PersonInfoMapper;
+import com.ruoyi.system.service.wx.PersonInfoService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonInfoServiceImpl extends ServiceImpl<PersonInfoDao, PersonInfoVO> implements PersonInfoService {
+public class PersonInfoServiceImpl extends ServiceImpl<PersonInfoMapper, PersonInfoVO> implements PersonInfoService {
 
-    private PersonInfoDao personInfoDao;
+    private PersonInfoMapper personInfoMapper;
 
     @Override
     public PersonInfoVO verifyLoginOrRegistration(String mobile, String password) {
         QueryWrapper<PersonInfoVO> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("mobile",mobile);
         PersonInfoVO personInfoVO = queryWrapper.getEntity();
-        if (personInfoDao == null){
+        if (personInfoMapper == null){
             personInfoVO = new PersonInfoVO();
             personInfoVO.setMobile(mobile);
             personInfoVO.setPassword(password);
-            personInfoDao.insert(personInfoVO);
+            personInfoMapper.insert(personInfoVO);
             return personInfoVO;
         }else {
             if(personInfoVO.getPersonId().equals(password)){

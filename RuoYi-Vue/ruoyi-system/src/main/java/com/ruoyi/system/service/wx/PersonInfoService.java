@@ -1,7 +1,8 @@
-package com.example.housetorentrearend.service.wx;
+package com.ruoyi.system.service.wx;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.housetorentrearend.entity.PersonInfoVO;
+import com.ruoyi.system.domain.vo.PersonInfoVO;
+
 
 public interface PersonInfoService extends IService<PersonInfoVO> {
     PersonInfoVO verifyLoginOrRegistration(String mobile, String password);
