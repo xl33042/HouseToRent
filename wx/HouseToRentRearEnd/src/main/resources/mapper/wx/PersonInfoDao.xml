@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace配置DAO的路径-->
+<mapper namespace="com.example.housetorentrearend.dao.wx.PersonInfoDao">
+<!--    <select id="judgeUsers" resultType="Integer">-->
+<!--        select count(*) cnt from personinfo where mobile = #{mobile}-->
+<!--    </select>-->
+
+<!--    <select id="fandUsers" resultType="com.example.housetorentrearend.entity.PersonInfoVO">-->
+<!--        select * from personinfo where mobile = #{mobile} and password = #{password}-->
+<!--    </select>-->
+
+</mapper>

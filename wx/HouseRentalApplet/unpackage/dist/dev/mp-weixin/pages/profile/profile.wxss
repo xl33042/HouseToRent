@@ -1,0 +1,38 @@
+
+.container.data-v-60cb334c {
+  padding: 20px;
+}
+.input-container.data-v-60cb334c {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.checkbox-container.data-v-60cb334c {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+input.data-v-60cb334c {
+  flex: 1;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+button.data-v-60cb334c {
+  height: 40px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+button.data-v-60cb334c:disabled {
+  background-color: #ccc;
+  color: #666;
+}
+.login-btn.data-v-60cb334c {
+  width: 100%;
+}
+

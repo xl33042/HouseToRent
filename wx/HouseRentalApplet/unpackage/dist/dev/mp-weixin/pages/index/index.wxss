@@ -1,0 +1,32 @@
+
+.search-area.data-v-57280228 {
+  position: relative;
+  margin: auto;
+  width: 90%;
+  margin-top: 20rpx;
+}
+.city-picker.data-v-57280228 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 25rpx;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
+.search-input.data-v-57280228 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100rpx;
+  padding: 0 20rpx;
+  border: none;
+  outline: none;
+  border-radius: 25rpx;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
+

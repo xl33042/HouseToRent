@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/profile/profile",
+    "pages/login/login",
+    "pages/PersonalCenter/PersonalCenter"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#707070",
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/icons/home.png",
+        "selectedIconPath": "static/icons/home_selected.png"
+      },
+      {
+        "pagePath": "pages/PersonalCenter/PersonalCenter",
+        "text": "个人中心",
+        "iconPath": "static/icons/profile.png",
+        "selectedIconPath": "static/icons/profile_selected.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
