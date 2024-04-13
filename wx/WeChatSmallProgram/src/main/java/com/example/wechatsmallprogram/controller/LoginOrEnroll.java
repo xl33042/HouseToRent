@@ -2,6 +2,7 @@ package com.example.wechatsmallprogram.controller;
 
 
 
+import cn.hutool.core.lang.UUID;
 import com.example.wechatsmallprogram.common.R;
 import com.example.wechatsmallprogram.entity.PersonInfoVO;
 import com.example.wechatsmallprogram.service.PersonInfoService;
@@ -11,10 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/LoginOrEnroll")
 public class LoginOrEnroll {
 
+
+    public final static Map<String,PersonInfoVO> Users = new HashMap<>();
 
     @Autowired
     private PersonInfoService personInfoService;
@@ -36,6 +42,19 @@ public class LoginOrEnroll {
         }
 
 
-        return R.ok(personInfoVO);
+        boolean pd = false;
+        String token = null;
+        for (String s : Users.keySet()) {
+            if (Users.get(s).getPersonId() == personInfoVO.getPersonId()){
+                token = s;
+                pd = true;
+            }
+        }
+        if(!pd){
+            token = UUID.randomUUID().toString();
+            Users.put(token,personInfoVO);
+        }
+
+        return R.ok(token);
     }
 }
