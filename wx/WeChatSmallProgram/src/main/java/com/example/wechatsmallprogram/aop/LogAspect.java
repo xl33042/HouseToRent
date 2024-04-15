@@ -13,7 +13,7 @@ public class LogAspect {
 
 
     //前置通知
-    @Before(value = "execution(public * com.example.housetorentrearend.controller.*.*(..))")
+    @Before(value = "execution(public * com.example.wechatsmallprogram.controller.*.*(..))")
     public void beforeMethod(JoinPoint joinPoint){
         String name = joinPoint.getSignature().getName();
         System.out.println(name+"方法开始执行...");
@@ -21,7 +21,7 @@ public class LogAspect {
 
 
     //后置通知
-    @After(value = "execution(public * com.example.housetorentrearend.controller.*.*(..))")
+    @After(value = "execution(public * com.example.wechatsmallprogram.controller.*.*(..))")
     public void after(JoinPoint joinPoint){
         String name = joinPoint.getSignature().getName();
         System.out.println(name+"方法执行结束...");

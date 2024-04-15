@@ -2,6 +2,9 @@
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "u-avatar": "/node-modules/uview-ui/components/u-avatar/u-avatar"
+    "u-avatar": "/node-modules/uview-ui/components/u-avatar/u-avatar",
+    "u-row": "/node-modules/uview-ui/components/u-row/u-row",
+    "u-col": "/node-modules/uview-ui/components/u-col/u-col",
+    "u-upload": "/node-modules/uview-ui/components/u-upload/u-upload"
   }
 }

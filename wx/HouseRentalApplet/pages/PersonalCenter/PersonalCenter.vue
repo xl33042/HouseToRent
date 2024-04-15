@@ -1,34 +1,112 @@
 <template>
-  <view class="gradient-view">
-    <view slot="title" class="profile" @tap="navigateToLoginPage">
-      <view class="avatar">
-        <u-avatar size="64" shape="circle"></u-avatar> <!-- 将头像设置为圆形 -->
-      </view>
-      <view class="nickname">
-        点击注册/登录
-      </view>
-    </view>
-  </view>
+	<view style="background-color: #f4f4f5;">
+		<view class="gradient-view">
+		  <view slot="title" class="profile" @tap="navigateToLoginPage">
+		    <view class="avatar">
+		      <u-avatar size="64" shape="circle"></u-avatar> <!-- 将头像设置为圆形 -->
+		    </view>
+		    <view class="nickname" >
+				{{userInfo.LoginRegister}}
+		      <!-- 点击注册/登录 -->
+		    </view>
+		  </view>
+		</view>
+		<!--------------- -->
+		<view class="u-demo-block__content" style="background-color: #ffffff; height: 120px; line-height: 80px;">
+		  <u-row justify="space-between" gutter="10">
+		    <u-col span="3" class="col-margin">
+		      <view class="demo-layout bg-purple">
+		        <image src="../../static/icon_sztk02npdah/dingyue.png" mode="aspectFit" style="width: 100%; height: 100rpx;"></image>
+		        <text class="text-below">二手房</text>
+		      </view>
+		    </u-col>
+			<u-col span="3" class="col-margin">
+			  <view class="demo-layout bg-purple">
+			    <image src="../../static/icon_sztk02npdah/guanzhu.png" mode="aspectFit" style="width: 100%; height: 100rpx;"></image>
+			    <text class="text-below">二手房</text>
+			  </view>
+			</u-col>
+			<u-col span="3" class="col-margin">
+			  <view class="demo-layout bg-purple">
+			    <image src="../../static/icon_sztk02npdah/liulan.png" mode="aspectFit" style="width: 100%; height: 100rpx;"></image>
+			    <text class="text-below">二手房</text>
+			  </view>
+			</u-col>
+			<u-col span="3" class="col-margin">
+			  <view class="demo-layout bg-purple">
+			    <image src="../../static/icons/profile_selected.png" mode="aspectFit" style="width: 100%; height: 100rpx;"></image>
+			    <text class="text-below">二手房</text>
+			  </view>
+			</u-col>
+		  </u-row>
+		</view>
+		<view style="background-color: #ffffff; width: 100%; height: 200px; margin-top: 8px;">
+		        <view>
+		            <form style="font-size: 18px;left: 10px;">我家</form> | “3000万业主的房产管家”
+		        </view>
+		        <u-upload
+		            :fileList="fileList"
+		            @afterRead="afterRead"
+		            @delete="deleteFile"
+		            multiple
+		            :maxCount="10"
+		            :previewFullImage="true"
+		        ></u-upload>
+		    </view>
+	</view>
 </template>
-
-<style scoped>
+<script>
+export default {
+	data() {
+		return{
+			fileList:[],
+			userInfo:{
+				LoginRegister:'1'
+			}
+		}
+	},
+	created(){
+		this.LoginRegister="组件创建成功。。。"
+		console.log("created.....")
+	},
+  methods: {
+    navigateToLoginPage() {
+      wx.navigateTo({
+        url: '/pages/login/login' // 替换成你的登录页面路径
+      });
+    },
+	 // 上传成功后执行的方法
+	        afterRead(event) {
+	            // 获取上传的文件列表
+	            const fileList = event.detail.fileList;
+	            // 将上传的文件列表添加到组件的fileList属性中
+	            this.fileList = fileList;
+	        },
+	        // 删除上传的文件
+	        deleteFile(event) {
+	            // 获取删除的文件索引
+	            const index = event.detail.index;
+	            // 从组件的fileList中移除对应索引的文件
+	            this.fileList.splice(index, 1);
+	        }
+  }
+}
+</script>
+<style scoped lang="scss">
 .gradient-view {
   width: 100%;
   height: 100px;
   background: linear-gradient(to right, rgba(39, 78, 255, 1.0), rgba(65, 164, 250, 1.0)); /* 添加渐变 */
-}
-
+}
 .profile {
   display: flex;
   align-items: center;
   line-height: 100px;
-}
-
+}
 .avatar {
   margin-right: 10px; /* 间距 */
   margin-left: 20px; /* 左边距 */
-}
-
+}
 .nickname {
   flex: 1; /* 占据剩余空间 */
   display: flex;
@@ -36,16 +114,35 @@
   color: #fff;
   size: 20px;
 }
+.icon {
+      width: 100px; /* 调整图标宽度 */
+      height: 100px; /* 调整图标高度 */
+	  background-color: black;
+	  }
+	  // .u-demo-block__content{
+		 //  margin-top: 30px;
+	  // }
+	  .wrap {
+	    padding: 12px;
+	  }
+	  
+	  .col-margin {
+	    margin: 0 20px; /* 设置列的左右 margin */
+		
+	  }
+	  
+	  .demo-layout {
+	    height: auto; /* 自适应高度 */
+	    border-radius: 4px;
+	    display: flex; /* 设置弹性布局 */
+	    flex-direction: column; /* 设置垂直方向的弹性布局 */
+		// line-height: 100px;
+	    align-items: center; /* 设置垂直居中 */
+	    justify-content: center; /* 设置居中 */
+	  }
+	  
+	  .text-below {
+	    font-size: 12px; /* 文本字体大小 */
+	    // margin-top: 50px; /* 调整文字与图片的上间距 */
+	  }
 </style>
-
-<script>
-export default {
-  methods: {
-    navigateToLoginPage() {
-      wx.navigateTo({
-        url: '/pages/login/login' // 替换成你的登录页面路径
-      });
-    }
-  }
-}
-</script>

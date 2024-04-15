@@ -13,13 +13,14 @@ function request(option) {
 			data: option.data ? option.data : null,
 			method: option.method ? option.method : 'get'
 		}).then(res => {
-			if (res.data.code === 200) {
-				console.log("res===========")
-				console.log(res)
-				resolve(res)
-			} else {
-				console.log(res)
-			}
+				console.log("返回的数据：")
+				
+				if(res.data.code === 200){
+					resolve(res.data.msg)
+				}
+
+				
+			
 		}).catch(err => {
 			console.log(res)
 			// uni.showToast({

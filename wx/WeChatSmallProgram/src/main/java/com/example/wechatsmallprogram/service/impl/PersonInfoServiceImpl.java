@@ -10,6 +10,8 @@ import com.example.wechatsmallprogram.service.PersonInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class PersonInfoServiceImpl extends ServiceImpl<PersonInfoMapper, PersonInfoVO> implements PersonInfoService {
 
@@ -27,15 +29,27 @@ public class PersonInfoServiceImpl extends ServiceImpl<PersonInfoMapper, PersonI
             personInfoVO = new PersonInfoVO();
             personInfoVO.setMobile(mobile);
             personInfoVO.setPassword(password);
+            personInfoVO.setCreaterTime(new Date());
+            personInfoVO.setState(2);
             personInfoMapper.insert(personInfoVO);
             personInfoVO = personInfoMapper.selectOne(queryWrapper);
             return personInfoVO;
         }else {
-            if(personInfoVO.getPersonId().equals(password)){
+            if(personInfoVO.getPassword().equals(password)){
                 return personInfoVO;
             }else {
                 return null;
             }
         }
+    }
+
+    @Override
+    public PersonInfoVO userData(int id) {
+        return personInfoMapper.selectById(id);
+    }
+
+    @Override
+    public void updateUserData(PersonInfoVO personInfoVO) {
+
     }
 }

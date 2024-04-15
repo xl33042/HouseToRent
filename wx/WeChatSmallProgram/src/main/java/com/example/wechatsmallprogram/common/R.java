@@ -1,71 +1,51 @@
 package com.example.wechatsmallprogram.common;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import org.apache.http.HttpStatus;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
-@Data
-@ApiModel("响应实体")
-public class R<T> implements Serializable {
-
-    @ApiModelProperty("响应状态码")
-    private int code = 200;
-
-    @ApiModelProperty("响应信息")
-    private String msg = "操作成功";
-
-    @ApiModelProperty("异常信息")
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private String errMsg = null;
-
-    @ApiModelProperty("响应数据")
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private T data = null;
+/**
+ * 返回数据类
+ */
+public class R extends HashMap<String, Object> implements Serializable {
 
     public R() {
+        put("code", HttpStatus.SC_OK);
+        put("msg", "操作成功");
     }
 
-    public R(int code, String msg) {
-        this.code = code;
-        this.msg = msg;
+    public static R error() {
+        return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "操作失败");
     }
 
-    public R(T data) {
-        this.data = data;
+    public static R error(String msg) {
+        return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, msg);
     }
 
-    public R(int code, String msg, T data) {
-        this.code = code;
-        this.msg = msg;
-        this.data = data;
-    }
-
-    public static <T> R<T> ok() {
-        return new R<>();
-    }
-
-    public static <T> R<T> ok(T data) {
-        return new R<>(data);
-    }
-
-    public static <T> R<T> error() {
-        return new R<>(500, "操作失败");
-    }
-
-    public static <T> R<T> error(String msg) {
-        return new R<>(500, msg);
-    }
-
-    public static <T> R<T> error(String msg, String errMsg) {
-        R<T> r = new R<>(500, msg);
-        r.setErrMsg(errMsg);
+    public static R error(int code, String msg) {
+        R r = new R();
+        r.put("code", code);
+        r.put("msg", msg);
         return r;
     }
 
-    public static <T> R<T> error(int code, String msg) {
-        return new R<>(code, msg);
+    public static R ok(Object msg) {
+        R r = new R();
+        r.put("msg", msg);
+        return r;
+    }
+
+
+
+    public static R ok() {
+        return new R();
+    }
+
+    @Override
+    public R put(String key, Object value) {
+        super.put(key, value);
+        return this;
     }
 }

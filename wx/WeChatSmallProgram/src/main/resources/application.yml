@@ -42,6 +42,7 @@ spring:
       filters: stat,wall,slf4j
 
 
+
   http:
     #设置字符编码
     encoding:
@@ -109,5 +110,5 @@ servlet:
 
 wx:
   miniapp:
-    appid: wxefa785fe6e0d5531
-    secret: 395a2512669534fdb8352cf8debf8856
+    appid: wx3753cf396a007474
+    secret: 484573a65d86704ebe55fac326358bca
