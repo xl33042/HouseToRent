@@ -4,7 +4,11 @@
     "pages/profile/profile",
     "pages/login/login",
     "pages/PersonalCenter/PersonalCenter",
-    "pages/logo/logo"
+    "pages/logo/logo",
+    "pages/personalinformation/personalinformation",
+    "pages/content/content",
+    "pages/username/username",
+    "pages/moreinformation/moreinformation"
   ],
   "subPackages": [],
   "window": {

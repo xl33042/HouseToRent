@@ -12,8 +12,7 @@
     </view> -->
 		<button class="login-btn" @tap="login">登录/注册</button>
 	</view>
-</template>
-
+</template>
 <script>
 	import request from '../../utils/request.js'
 	export default {
@@ -22,12 +21,10 @@
 				phoneNumber: '',
 				password: '',
 				verificationCode: '',
-				agree: false,
-
+				agree: false,
 			};
 		},
-		computed: {
-
+		computed: {
 		},
 		methods: {
 			sendVerificationCode() {
@@ -47,54 +44,45 @@
 					data: {
 						"mobile": this.phoneNumber,
 						"password": this.password
-					}
-
-				}).then(res => {
-				
-
+					}
+				}).then(res => {
 					if (res.code == 1) {
-						uni.setStorage({
-							key: "token",
-							data: res.msg
-						})
-					} else {
+						uni.setStorageSync("token",res.msg)
+						uni.reLaunch({
+							url:'/pages/PersonalCenter/PersonalCenter'
+						})
+					} else {
 						uni.showToast({
-							title: res.msg
-						})
-					}
-
-
+							title: res.msg,
+							icon: 'none' // 将图标设置为空，表示不显示图标
+						})
+					}
 				})
 			}
 		}
 	};
-</script>
-
+</script>
 <style scoped>
 	.container {
 		padding: 20px;
-	}
-
+	}
 	.input-container {
 		display: flex;
 		align-items: center;
 		margin-bottom: 20px;
-	}
-
+	}
 	.checkbox-container {
 		display: flex;
 		align-items: center;
 		margin-bottom: 20px;
-	}
-
+	}
 	input {
 		flex: 1;
 		height: 40px;
 		padding: 0 10px;
 		border: 1px solid #ccc;
 		border-radius: 5px;
-	}
-
+	}
 	button {
 		height: 40px;
 		padding: 0 10px;
@@ -103,13 +91,11 @@
 		background-color: #007bff;
 		color: #fff;
 		cursor: pointer;
-	}
-
+	}
 	button:disabled {
 		background-color: #ccc;
 		color: #666;
-	}
-
+	}
 	.login-btn {
 		width: 100%;
 	}

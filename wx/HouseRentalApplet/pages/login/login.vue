@@ -26,18 +26,17 @@ export default {
   },
   methods: {
     navigateToLogin() {
-		console.log(this.agree)
-      if (!this.agree) {
-        uni.showToast({
-          title: '请先同意服务条款',
-          icon: 'none',
-        });
-      } else {
-        // 修改为相对路径，确保与项目结构一致
-        uni.navigateTo({
-          url: '/pages/profile/profile'
-        });
-      }
+        if (!this.agree) {
+            uni.showToast({
+                title: '请先同意服务条款',
+                icon: 'none',
+            });
+        } else {
+            // 修改为相对路径，确保与项目结构一致
+            uni.navigateTo({
+                url: '/pages/profile/profile'
+            });
+        }
     },
 	tyTiaoKuan(){
 		
