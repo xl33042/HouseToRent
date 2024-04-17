@@ -109,9 +109,6 @@ try {
     uCol: function () {
       return Promise.all(/*! import() | node-modules/uview-ui/components/u-col/u-col */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-col/u-col")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-col/u-col.vue */ 239))
     },
-    uUpload: function () {
-      return Promise.all(/*! import() | node-modules/uview-ui/components/u-upload/u-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-upload/u-upload")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-upload/u-upload.vue */ 271))
-    },
   }
 } catch (e) {
   if (
@@ -232,13 +229,16 @@ var _request = _interopRequireDefault(__webpack_require__(/*! ../../utils/reques
 //
 //
 //
-//
 var _default = {
   data: function data() {
     return {
       fileList: [],
       userName: "点击注册/登录"
     };
+  },
+  created: function created() {
+    console.log("created.....");
+    this.initializationUser();
   },
   methods: {
     navigateToLoginPage: function navigateToLoginPage() {
@@ -252,20 +252,6 @@ var _default = {
           url: '/pages/personalinformation/personalinformation'
         });
       }
-    },
-    // 上传成功后执行的方法
-    afterRead: function afterRead(event) {
-      if (event && event.detail && event.detail.fileList) {
-        var fileList = event.detail.fileList;
-        this.fileList = fileList;
-      }
-    },
-    // 删除上传的文件
-    deleteFile: function deleteFile(event) {
-      // 获取删除的文件索引
-      var index = event.detail.index;
-      // 从组件的fileList中移除对应索引的文件
-      this.fileList.splice(index, 1);
     },
     //初始化用户信息
     initializationUser: function initializationUser() {
@@ -292,10 +278,6 @@ var _default = {
         });
       }
     }
-  },
-  created: function created() {
-    console.log("created.....");
-    this.initializationUser();
   }
 };
 exports.default = _default;

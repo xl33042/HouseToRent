@@ -48,8 +48,7 @@
 			<view>
 				<form style="font-size: 18px;left: 10px;">我家</form> | “3000万业主的房产管家”
 			</view>
-			<u-upload :fileList="fileList" @afterRead="afterRead" @delete="deleteFile" multiple :maxCount="10"
-				:previewFullImage="true"></u-upload>
+
 		</view>
 		<view style="background-color: #ffffff; width: 100%; height: 100%; margin-top: 8px;">
 			1111
@@ -65,7 +64,11 @@
 				userName: "点击注册/登录",
 			}
 		},
+		created() {
 
+			console.log("created.....")
+			this.initializationUser()
+		},
 		methods: {
 			navigateToLoginPage() {
 				let token = uni.getStorageSync("token")
@@ -80,21 +83,7 @@
 				}
 
 			},
-			// 上传成功后执行的方法
-			afterRead(event) {
-				if (event && event.detail && event.detail.fileList) {
-					const fileList = event.detail.fileList;
-					this.fileList = fileList;
-				}
-			},
 
-			// 删除上传的文件
-			deleteFile(event) {
-				// 获取删除的文件索引
-				const index = event.detail.index;
-				// 从组件的fileList中移除对应索引的文件
-				this.fileList.splice(index, 1);
-			},
 			//初始化用户信息
 			initializationUser() {
 				let token = uni.getStorageSync("token")
@@ -125,12 +114,8 @@
 					})
 				}
 			}
-		},
-		created() {
+		}
 
-			console.log("created.....")
-			this.initializationUser()
-		},
 	}
 </script>
 <style scoped lang="scss">

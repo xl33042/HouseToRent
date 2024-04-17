@@ -100,6 +100,9 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
+    uPicker: function () {
+      return Promise.all(/*! import() | node-modules/uview-ui/components/u-picker/u-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-picker/u-picker")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-picker/u-picker.vue */ 272))
+    },
     uRow: function () {
       return Promise.all(/*! import() | node-modules/uview-ui/components/u-row/u-row */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-row/u-row")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-row/u-row.vue */ 231))
     },
@@ -128,6 +131,15 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function ($event) {
+      $event.stopPropagation()
+      _vm.show = true
+    }
+    _vm.e1 = function ($event) {
+      _vm.show = false
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -163,10 +175,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _city = _interopRequireDefault(__webpack_require__(/*! @/utils/city.js */ 271));
 //
 //
 //
@@ -230,11 +244,7 @@ exports.default = void 0;
 //
 //
 //
-//
-//
-//
-//
-//
+// 导入城市js文件
 var _default = {
   data: function data() {
     return {
@@ -254,12 +264,19 @@ var _default = {
         id: 5,
         url: "../../static/banner/banner5.jpg"
       }],
-      cities: ['北京', '上海', '广州', '深圳', '杭州'],
-      // 城市列表
-      selectedCity: '' // 选中的城市
+      show: false,
+      // 打开选择器显示默认城市
+      cityList: [],
+      cityLevel1: [],
+      cityLevel2: [],
+      cityLevel3: [],
+      address: ""
     };
   },
-
+  onLoad: function onLoad() {
+    // 城市选择器初始化
+    this.initCityData();
+  },
   methods: {
     changePic: function changePic(e) {
 
@@ -273,6 +290,59 @@ var _default = {
     },
     onCityChange: function onCityChange(e) {
       this.selectedCity = this.cities[e.detail.value];
+    },
+    initCityData: function initCityData() {
+      var _this = this;
+      // 遍历城市js
+      _city.default.forEach(function (item1, index1) {
+        var temp2 = [];
+        _this.cityLevel1.push(item1.provinceName);
+        var temp4 = [];
+        var temp3 = [];
+        // 遍历市
+        item1.cities.forEach(function (item2, index2) {
+          temp2.push(item2.cityName);
+          // 遍历区
+          item2.counties.forEach(function (item3, index3) {
+            temp3.push(item3.countyName);
+          });
+          temp4[index2] = temp3;
+          temp3 = [];
+        });
+        _this.cityLevel3[index1] = temp4;
+        _this.cityLevel2[index1] = temp2;
+      });
+      // 选择器默认城市
+      this.cityList.push(this.cityLevel1, this.cityLevel2[0], this.cityLevel3[0][0]);
+    },
+    // 选中时执行
+    changeHandler: function changeHandler(e) {
+      var columnIndex = e.columnIndex,
+        index = e.index,
+        indexs = e.indexs,
+        value = e.value,
+        values = e.values,
+        _e$picker = e.picker,
+        picker = _e$picker === void 0 ? this.$refs.uPicker : _e$picker;
+      if (columnIndex === 0) {
+        // 选择第一列数据时
+        // 设置第二列关联数据
+        picker.setColumnValues(1, this.cityLevel2[index]);
+        // 设置第三列关联数据
+        picker.setColumnValues(2, this.cityLevel3[index][columnIndex]);
+      } else if (columnIndex === 1) {
+        // 选择第二列数据时
+        // 设置第三列关联数据
+        picker.setColumnValues(2, this.cityLevel3[indexs[0]][index]);
+      }
+    },
+    // 单击确认按钮时执行
+    confirm: function confirm(e) {
+      // 输出数组 [省, 市, 区]
+      this.address = e.value[0] + "-" + e.value[1] + "-" + e.value[2];
+      console.log(this.address);
+      // 隐藏城市选择器
+      this.show = false;
     }
   }
 };
